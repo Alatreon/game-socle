@@ -1,0 +1,7 @@
+{
+  "name": "game-socle",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
