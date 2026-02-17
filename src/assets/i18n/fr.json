@@ -1,0 +1,46 @@
+{
+  "menu": {
+    "title": "Mon Jeu",
+    "continue": "Continuer",
+    "newGame": "Nouvelle partie",
+    "loadGame": "Charger partie",
+    "settings": "Options"
+  },
+  "settings": {
+    "title": "Options",
+    "sound": "Son",
+    "music": "Musique",
+    "theme": "Thème",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "language": "Langue",
+    "languageFr": "Français",
+    "languageEn": "English"
+  },
+  "newGame": {
+    "title": "Nouvelle partie",
+    "saveName": "Nom de la partie",
+    "saveNamePlaceholder": "Ma partie",
+    "difficulty": "Difficulté",
+    "easy": "Facile",
+    "medium": "Normal",
+    "hard": "Difficile",
+    "start": "Commencer"
+  },
+  "loadGame": {
+    "title": "Charger partie",
+    "empty": "Aucune sauvegarde",
+    "delete": "Supprimer"
+  },
+  "game": {
+    "difficulty": "Difficulté",
+    "gameArea": "Zone de jeu",
+    "saved": "Partie sauvegardée"
+  },
+  "confirm": {
+    "deleteTitle": "Supprimer la partie",
+    "deleteMessage": "Voulez-vous vraiment supprimer cette partie ? Cette action est irréversible.",
+    "confirm": "Supprimer",
+    "cancel": "Annuler"
+  }
+}

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'settings.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>{{ 'settings.sound' | translate }}</ion-label>
+      <ion-toggle
+        [checked]="settings.soundEnabled"
+        (ionChange)="onSoundToggle($event)">
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{ 'settings.music' | translate }}</ion-label>
+      <ion-toggle
+        [checked]="settings.musicEnabled"
+        (ionChange)="onMusicToggle($event)">
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{ 'settings.theme' | translate }}</ion-label>
+      <ion-select
+        [value]="settings.theme"
+        (ionChange)="onThemeChange($event)">
+        <ion-select-option value="light">{{ 'settings.themeLight' | translate }}</ion-select-option>
+        <ion-select-option value="dark">{{ 'settings.themeDark' | translate }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{ 'settings.language' | translate }}</ion-label>
+      <ion-select
+        [value]="settings.language"
+        (ionChange)="onLanguageChange($event)">
+        <ion-select-option value="fr">{{ 'settings.languageFr' | translate }}</ion-select-option>
+        <ion-select-option value="en">{{ 'settings.languageEn' | translate }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

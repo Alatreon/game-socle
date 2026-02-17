@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goHome()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ save?.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="saveGame()">
+        <ion-icon slot="icon-only" name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p>{{ 'game.difficulty' | translate }} : {{ 'newGame.' + save?.difficulty | translate }}</p>
+
+  <!-- Zone de jeu à personnaliser pour chaque jeu -->
+  <div class="game-area">
+    <p>{{ 'game.gameArea' | translate }}</p>
+  </div>
+</ion-content>
