@@ -1,0 +1,34 @@
+{
+  "menu": {
+    "title": "My Game",
+    "newGame": "New Game",
+    "loadGame": "Load Game",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "sound": "Sound",
+    "music": "Music",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "language": "Language",
+    "languageFr": "Français",
+    "languageEn": "English"
+  },
+  "newGame": {
+    "title": "New Game",
+    "saveName": "Save name",
+    "saveNamePlaceholder": "My game",
+    "difficulty": "Difficulty",
+    "easy": "Easy",
+    "medium": "Normal",
+    "hard": "Hard",
+    "start": "Start"
+  },
+  "loadGame": {
+    "title": "Load Game",
+    "empty": "No saved games",
+    "delete": "Delete"
+  }
+}

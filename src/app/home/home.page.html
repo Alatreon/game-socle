@@ -1,20 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="menu-container">
+    <h1>Mon Jeu</h1>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div class="menu-buttons">
+      <ion-button expand="block" (click)="newGame()">
+        <ion-icon slot="start" name="add-outline"></ion-icon>
+        Nouvelle partie
+      </ion-button>
+
+      <ion-button expand="block" (click)="loadGame()">
+        <ion-icon slot="start" name="folder-open-outline"></ion-icon>
+        Charger partie
+      </ion-button>
+
+      <ion-button expand="block" (click)="openSettings()">
+        <ion-icon slot="start" name="settings-outline"></ion-icon>
+        Options
+      </ion-button>
+    </div>
   </div>
 </ion-content>

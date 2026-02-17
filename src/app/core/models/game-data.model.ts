@@ -3,6 +3,7 @@ export interface AppSettings {
   soundEnabled: boolean;
   musicEnabled: boolean;
   theme: 'light' | 'dark';
+  language: 'fr' | 'en';
 }
 
 // Une sauvegarde de partie
@@ -24,7 +25,8 @@ export interface AppData {
 export const DEFAULT_SETTINGS: AppSettings = {
   soundEnabled: true,
   musicEnabled: true,
-  theme: 'light'
+  theme: 'dark',
+  language: 'fr'
 };
 
 export const DEFAULT_APP_DATA: AppData = {

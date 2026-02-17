@@ -34,4 +34,33 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import '@ionic/angular/css/palettes/dark.class.css';
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    color: var(--ion-color-primary);
+  }
+}
+
+.menu-buttons {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  ion-button {
+    --border-radius: 12px;
+    height: 56px;
+    font-size: 1.1rem;
+  }
+}

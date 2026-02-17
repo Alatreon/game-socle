@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { StorageService } from './storage.service';
 import { AppData, AppSettings, GameSave } from '../models/game-data.model';
-import { StorageService } from './storage';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,11 @@ export class GameService {
 
   private appData!: AppData;
 
-  constructor(private storageService: StorageService) {}
+  constructor(private storageService: StorageService) { }
 
-  // Initialise le service (à appeler au démarrage de l'app)
   async init(): Promise<void> {
     this.appData = await this.storageService.loadAppData();
+    this.applyTheme(this.appData.settings.theme);
   }
 
   // ===== SETTINGS =====
@@ -62,6 +62,14 @@ export class GameService {
   async deleteSave(id: string): Promise<void> {
     this.appData.saves = this.appData.saves.filter(save => save.id !== id);
     await this.storageService.saveAppData(this.appData);
+  }
+
+  // ===== THEME =====
+
+  applyTheme(theme: 'light' | 'dark'): void {
+    console.log('applyTheme called with:', theme);
+    document.body.classList.toggle('dark', theme === 'dark');
+    console.log('body classes:', document.body.className);
   }
 
   // ===== UTILS =====

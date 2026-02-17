@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Options</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Son</ion-label>
+      <ion-toggle
+        [checked]="settings.soundEnabled"
+        (ionChange)="onSoundToggle($event)">
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Musique</ion-label>
+      <ion-toggle
+        [checked]="settings.musicEnabled"
+        (ionChange)="onMusicToggle($event)">
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Thème</ion-label>
+      <ion-select
+        [value]="settings.theme"
+        (ionChange)="onThemeChange($event)">
+        <ion-select-option value="light">Clair</ion-select-option>
+        <ion-select-option value="dark">Sombre</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
