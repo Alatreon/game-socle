@@ -14,8 +14,9 @@ import {
   IonSelect,
   IonSelectOption
 } from '@ionic/angular/standalone';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { GameService } from '../../core/services/game.service';
 import { AppSettings } from '../../core/models/game-data.model';
-import { GameService } from 'src/app/core/services/game.service';
 
 @Component({
   selector: 'app-settings',
@@ -34,14 +35,18 @@ import { GameService } from 'src/app/core/services/game.service';
     IonLabel,
     IonToggle,
     IonSelect,
-    IonSelectOption
+    IonSelectOption,
+    TranslatePipe
   ],
 })
 export class SettingsPage implements OnInit {
 
   settings!: AppSettings;
 
-  constructor(private gameService: GameService) {}
+  constructor(
+    private gameService: GameService,
+    private translate: TranslateService
+  ) { }
 
   ngOnInit(): void {
     this.settings = this.gameService.getSettings();
@@ -59,5 +64,11 @@ export class SettingsPage implements OnInit {
     const theme = event.detail.value;
     await this.gameService.updateSettings({ theme });
     this.gameService.applyTheme(theme);
+  }
+
+  async onLanguageChange(event: any): Promise<void> {
+    const language = event.detail.value;
+    await this.gameService.updateSettings({ language });
+    this.translate.use(language);
   }
 }

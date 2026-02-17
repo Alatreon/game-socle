@@ -3,11 +3,14 @@ import { Router } from '@angular/router';
 import {
   IonContent,
   IonButton,
-  IonIcon
+  IonIcon,
+  ViewWillEnter
 } from '@ionic/angular/standalone';
 import { TranslatePipe } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
-import { addOutline, folderOpenOutline, settingsOutline } from 'ionicons/icons';
+import { addOutline, folderOpenOutline, settingsOutline, gameControllerOutline } from 'ionicons/icons';
+import { GameSave } from '../core/models/game-data.model';
+import { GameService } from '../core/services/game.service';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +18,16 @@ import { addOutline, folderOpenOutline, settingsOutline } from 'ionicons/icons';
   styleUrls: ['home.page.scss'],
   imports: [IonContent, IonButton, IonIcon, TranslatePipe],
 })
-export class HomePage {
+export class HomePage implements ViewWillEnter {
 
-  constructor(private router: Router) {
-    addIcons({ addOutline, folderOpenOutline, settingsOutline });
+  lastSave: GameSave | undefined;
+
+  constructor(private router: Router, private gameService: GameService) {
+    addIcons({ addOutline, folderOpenOutline, settingsOutline, gameControllerOutline });
+  }
+
+  ionViewWillEnter() {
+    this.lastSave = this.gameService.getLastSave();
   }
 
   newGame(): void {
@@ -31,5 +40,9 @@ export class HomePage {
 
   openSettings(): void {
     this.router.navigate(['/settings']);
+  }
+
+  continueGame(): void {
+    this.router.navigate(['/game', this.lastSave?.id]);
   }
 }

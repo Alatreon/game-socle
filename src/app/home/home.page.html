@@ -1,21 +1,26 @@
 <ion-content [fullscreen]="true">
   <div class="menu-container">
-    <h1>Mon Jeu</h1>
-
+    <h1>{{ 'menu.title' | translate }}</h1>
     <div class="menu-buttons">
+      @if(lastSave) {
+      <ion-button expand="block" (click)="continueGame()">
+        <ion-icon slot="start" name="game-controller-outline"></ion-icon>
+        {{ 'menu.continue' | translate }}
+      </ion-button>
+      }
       <ion-button expand="block" (click)="newGame()">
         <ion-icon slot="start" name="add-outline"></ion-icon>
-        Nouvelle partie
+        {{ 'menu.newGame' | translate }}
       </ion-button>
 
       <ion-button expand="block" (click)="loadGame()">
         <ion-icon slot="start" name="folder-open-outline"></ion-icon>
-        Charger partie
+        {{ 'menu.loadGame' | translate }}
       </ion-button>
 
       <ion-button expand="block" (click)="openSettings()">
         <ion-icon slot="start" name="settings-outline"></ion-icon>
-        Options
+        {{ 'menu.settings' | translate }}
       </ion-button>
     </div>
   </div>

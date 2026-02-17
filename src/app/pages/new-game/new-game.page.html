@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Nouvelle partie</ion-title>
+    <ion-title>{{ 'newGame.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,28 +11,28 @@
   <ion-list>
     <ion-item>
       <ion-input
-        label="Nom de la partie"
+        [label]="'newGame.saveName' | translate"
         labelPlacement="stacked"
-        placeholder="Ma partie"
+        [placeholder]="saveNamePlaceholder"
         [(ngModel)]="saveName">
       </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-select
-        label="Difficulté"
+        [label]="'newGame.difficulty' | translate"
         labelPlacement="stacked"
         [(ngModel)]="difficulty">
-        <ion-select-option value="easy">Facile</ion-select-option>
-        <ion-select-option value="medium">Normal</ion-select-option>
-        <ion-select-option value="hard">Difficile</ion-select-option>
+        <ion-select-option value="easy">{{ 'newGame.easy' | translate }}</ion-select-option>
+        <ion-select-option value="medium">{{ 'newGame.medium' | translate }}</ion-select-option>
+        <ion-select-option value="hard">{{ 'newGame.hard' | translate }}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
   <div class="button-container">
     <ion-button expand="block" (click)="createGame()" [disabled]="!saveName.trim()">
-      Commencer
+      {{ 'newGame.start' | translate }}
     </ion-button>
   </div>
 </ion-content>

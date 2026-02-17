@@ -1,0 +1,14 @@
+.game-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  border: 2px dashed var(--ion-color-medium);
+  border-radius: 12px;
+  margin-top: 20px;
+
+  p {
+    color: var(--ion-color-medium);
+    font-size: 1.2rem;
+  }
+}

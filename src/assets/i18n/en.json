@@ -1,6 +1,7 @@
 {
   "menu": {
     "title": "My Game",
+    "continue": "Continue",
     "newGame": "New Game",
     "loadGame": "Load Game",
     "settings": "Settings"
@@ -30,5 +31,16 @@
     "title": "Load Game",
     "empty": "No saved games",
     "delete": "Delete"
+  },
+  "game": {
+    "difficulty": "Difficulty",
+    "gameArea": "Game area",
+    "saved": "Game saved"
+  },
+  "confirm": {
+    "deleteTitle": "Delete game",
+    "deleteMessage": "Are you sure you want to delete this game? This action cannot be undone.",
+    "confirm": "Delete",
+    "cancel": "Cancel"
   }
 }

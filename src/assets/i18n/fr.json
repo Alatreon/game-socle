@@ -1,6 +1,7 @@
 {
   "menu": {
     "title": "Mon Jeu",
+    "continue": "Continuer",
     "newGame": "Nouvelle partie",
     "loadGame": "Charger partie",
     "settings": "Options"
@@ -30,5 +31,16 @@
     "title": "Charger partie",
     "empty": "Aucune sauvegarde",
     "delete": "Supprimer"
+  },
+  "game": {
+    "difficulty": "Difficulté",
+    "gameArea": "Zone de jeu",
+    "saved": "Partie sauvegardée"
+  },
+  "confirm": {
+    "deleteTitle": "Supprimer la partie",
+    "deleteMessage": "Voulez-vous vraiment supprimer cette partie ? Cette action est irréversible.",
+    "confirm": "Supprimer",
+    "cancel": "Annuler"
   }
 }
