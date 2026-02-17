@@ -1,26 +1,28 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonButtons,
   IonBackButton,
-  IonList,
-  IonItem,
-  IonLabel,
+  IonButtons,
+  IonContent,
+  IonHeader,
   IonIcon,
-  IonItemSliding,
+  IonItem,
+  IonItemOption,
   IonItemOptions,
-  IonItemOption
+  IonItemSliding,
+  IonLabel,
+  IonList,
+  IonTitle,
+  IonToolbar,
+  ModalController
 } from '@ionic/angular/standalone';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
 import { trashOutline } from 'ionicons/icons';
-import { GameService } from '../../core/services/game.service';
 import { GameSave } from '../../core/models/game-data.model';
+import { GameService } from '../../core/services/game.service';
+import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-load-game',
@@ -50,7 +52,9 @@ export class LoadGamePage implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private router: Router
+    private router: Router,
+    private modalController: ModalController,
+    private translate: TranslateService
   ) {
     addIcons({ trashOutline });
   }
@@ -67,9 +71,27 @@ export class LoadGamePage implements OnInit {
     this.router.navigate(['/game', save.id]);
   }
 
-  async deleteSave(save: GameSave): Promise<void> {
-    await this.gameService.deleteSave(save.id);
-    this.loadSaves();
+  async confirmDelete(save: GameSave): Promise<void> {
+    const modal = await this.modalController.create({
+      component: ConfirmModalComponent,
+      componentProps: {
+        title: this.translate.instant('confirm.deleteTitle'),
+        message: this.translate.instant('confirm.deleteMessage'),
+        confirmText: this.translate.instant('confirm.confirm'),
+        cancelText: this.translate.instant('confirm.cancel')
+      },
+      breakpoints: [0, 0.4],
+      initialBreakpoint: 0.4
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+
+    if (data === true) {
+      await this.gameService.deleteSave(save.id);
+      this.loadSaves();
+    }
   }
 
   formatDate(timestamp: number): string {

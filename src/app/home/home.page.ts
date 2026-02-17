@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  IonContent,
   IonButton,
+  IonContent,
   IonIcon,
   ViewWillEnter
 } from '@ionic/angular/standalone';
 import { TranslatePipe } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
-import { addOutline, folderOpenOutline, settingsOutline, gameControllerOutline } from 'ionicons/icons';
+import { addOutline, folderOpenOutline, gameControllerOutline, settingsOutline } from 'ionicons/icons';
 import { GameSave } from '../core/models/game-data.model';
+import { AudioService } from '../core/services/audio.service';
 import { GameService } from '../core/services/game.service';
 
 @Component({
@@ -22,12 +23,18 @@ export class HomePage implements ViewWillEnter {
 
   lastSave: GameSave | undefined;
 
-  constructor(private router: Router, private gameService: GameService) {
+  constructor(private router: Router, private gameService: GameService, private audioService: AudioService) {
     addIcons({ addOutline, folderOpenOutline, settingsOutline, gameControllerOutline });
   }
 
   ionViewWillEnter() {
     this.lastSave = this.gameService.getLastSave();
+  }
+
+  continueGame(): void {
+    this.audioService.playSound('click');
+    console.log("test 1234");
+    this.router.navigate(['/game', this.lastSave?.id]);
   }
 
   newGame(): void {
@@ -42,7 +49,4 @@ export class HomePage implements ViewWillEnter {
     this.router.navigate(['/settings']);
   }
 
-  continueGame(): void {
-    this.router.navigate(['/game', this.lastSave?.id]);
-  }
 }

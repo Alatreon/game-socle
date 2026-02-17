@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonButtons,
   IonBackButton,
-  IonList,
+  IonButtons,
+  IonContent,
+  IonHeader,
   IonItem,
   IonLabel,
-  IonToggle,
+  IonList,
   IonSelect,
-  IonSelectOption
+  IonSelectOption,
+  IonTitle,
+  IonToggle,
+  IonToolbar
 } from '@ionic/angular/standalone';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { GameService } from '../../core/services/game.service';
 import { AppSettings } from '../../core/models/game-data.model';
+import { AudioService } from '../../core/services/audio.service';
+import { GameService } from '../../core/services/game.service';
 
 @Component({
   selector: 'app-settings',
@@ -45,6 +46,7 @@ export class SettingsPage implements OnInit {
 
   constructor(
     private gameService: GameService,
+    private audioService: AudioService,
     private translate: TranslateService
   ) { }
 
@@ -53,11 +55,15 @@ export class SettingsPage implements OnInit {
   }
 
   async onSoundToggle(event: any): Promise<void> {
-    await this.gameService.updateSettings({ soundEnabled: event.detail.checked });
+    const enabled = event.detail.checked;
+    await this.gameService.updateSettings({ soundEnabled: enabled });
+    this.audioService.onSoundSettingChanged(enabled);
   }
 
   async onMusicToggle(event: any): Promise<void> {
-    await this.gameService.updateSettings({ musicEnabled: event.detail.checked });
+    const enabled = event.detail.checked;
+    await this.gameService.updateSettings({ musicEnabled: enabled });
+    this.audioService.onMusicSettingChanged(enabled);
   }
 
   async onThemeChange(event: any): Promise<void> {
